@@ -52,5 +52,14 @@
     </ul>
 </li>
         </div>
+        @auth 
+        @if(Auth::user()->is_revisor)
+        <li class="nav-item">
+            <a href="{{route('revisor.index')}}" class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25">zona revisore</a>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded pill bg-danger">
+            {{ \App\Models\Article::toBeRevisedCount() }}
+        </span>
+        </li>
+        @endif
     </div>
 </nav>
