@@ -23,7 +23,7 @@
 </li>
 @else 
 <li class="nav-item dropdown">
-    <li><a class="dropdown-item" href="{{route('article.create')}}"></a></li>
+    <li><a class="dropdown-item" href="{{route('create.article')}}"></a></li>
     <li class="nav-item">
         <a class="nav-link" aria-current="page" href="{{route('article.index')}}">Tutti gli articoli</a>
     </li>
@@ -45,21 +45,24 @@
     <ul class="dropdown-menu">
         @foreach ($categories as $category)
           <li><a href="{{route('byCategory', ['category' => $category ])}}" class="dropdown-item text-capitalize">{{ $category->name }}</a></li>  
-        @if (!loop->last)
+        @if (!$loop->last)
         <hr class="dropdown-divider">
         @endif
           @endforeach
     </ul>
 </li>
         </div>
-        @auth 
-        @if(Auth::user()->is_revisor)
-        <li class="nav-item">
-            <a href="{{route('revisor.index')}}" class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25">zona revisore</a>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded pill bg-danger">
-            {{ \App\Models\Article::toBeRevisedCount() }}
-        </span>
-        </li>
-        @endif
+        @auth
+            @if(Auth::user()->is_revisor)
+                <li class="nav-item">
+                    <a href="{{ route('revisor.index') }}" class="nav-link btn btn-outline-success btn-sm position-relative">
+                        Revisore
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ \App\Models\Article::toBeRevisedCount() }}
+                        </span>
+                    </a>
+                </li>
+            @endif
+        @endauth
     </div>
 </nav>
