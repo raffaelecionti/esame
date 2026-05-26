@@ -13,16 +13,13 @@ use Override;
 class ArticleController extends Controller implements HasMiddleware
 {
 
-public function __construct()
-{
-    $this->middleware('auth');
-}
 
+  
     #[Override]
     public static function middleware(): array
     {
        return [
-       new Middleware('auth', only: ['create']),
+       new Middleware('auth', only: ['create'])
        ];
     }
 
@@ -47,4 +44,6 @@ public function __construct()
         $articles = $category->articles->where('is_accepted', true);
         return view('article.byCategory', compact('articles', 'category'));
     }
+
+
 }
