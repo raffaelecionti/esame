@@ -13,6 +13,11 @@ use Override;
 class ArticleController extends Controller implements HasMiddleware
 {
 
+public function __construct()
+{
+    $this->middleware('auth');
+}
+
     #[Override]
     public static function middleware(): array
     {

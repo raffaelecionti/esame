@@ -14,7 +14,7 @@
     <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Ciao, {{ Auth::user()->name }}
     </a>
-    <ul class="dropdowm-menu">
+    <ul class="dropdown-menu">
         <li><a href="#" class="dropdown-item">
            onclick="event.preventDefault(); document.querySelector(#form-logout).submit();">Logout</a>
         </li>
@@ -39,7 +39,7 @@
 @endauth
 </ul>
 <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdwong-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Categorie
     </a>
     <ul class="dropdown-menu">
